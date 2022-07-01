@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd6f984ead7e234792ffd717a78006f, type: 3}
+  m_Name: InteractorPrefabList
+  m_EditorClassIdentifier: 
+  tabPrefabs:
+  - {fileID: 2992079630885640024, guid: 874953d08b2efb24f9186cae2c3643cb, type: 3}
+  - {fileID: 1638358366408493629, guid: e08bc3c5eabad7a41a5b02ea1395f36e, type: 3}
+  - {fileID: 2421664318054602039, guid: be0807d7dc4f3f14f8d85831533d0ab9, type: 3}
+  - {fileID: 2631076828415688404, guid: 7c7df7cbf31b53f4897a2dfe58d6e972, type: 3}
+  - {fileID: 6318989329870334738, guid: 716a7c7d7981b8342abcf9a17622e90b, type: 3}
+  - {fileID: 4359092645749158167, guid: 7fc123ec334d6d0429318e63fece126e, type: 3}
+  - {fileID: 5048986947771561712, guid: 5ad82f8253125694190028b94e7a4d00, type: 3}
+  - {fileID: 0}
+  - {fileID: 8524163018840167142, guid: b0301c0dc8cfdce409122dfda09c7caf, type: 3}
+  - {fileID: 8392616767852957646, guid: 8e3a130aa2e778e4cb0dbb533153e5d9, type: 3}
+  listPointer: 0400000003000000010000000100000001000000
+  excludePlayerMask: 1
+  surfaceRotation: 2
+  addComponentsOnParent: 0
+  rightClickTimer: 100

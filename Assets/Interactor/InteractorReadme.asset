@@ -1,0 +1,113 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0349c7867b2fcd2449b7a49bd6aa2f43, type: 3}
+  m_Name: InteractorReadme
+  m_EditorClassIdentifier: 
+  icon: {fileID: 2800000, guid: 67901cddf5c17f04b89a2f160c0b6d06, type: 3}
+  iconMaxWidth: 192
+  title: "    Interactor \n      v0.65 beta"
+  sections:
+  - heading: Thank You!
+    text: So you're here! It means you spent your money on my software (I suppose),
+      imported in your project and ready to use. I'm glad that you did and it feels
+      really good to have real people after spending too much time alone. You'll find
+      everything you need below and if you cant, feel free to ask.
+    linkText: 
+    url: 
+  - heading: Setup for Interactor
+    text: "No need to worry for setup because Interactor needs so little to change
+      in your project. \n\n1 - Add \"Player\" layer to your Layers (Top right of Editor)
+      and assign your player to that layer. This is for preventing conflicts while
+      spawning new prefabs or selecting distance objects with raycasts. \n\n2 - Change
+      your Color Space to Linear on \"Project Settings > Player > Color Space\". This
+      is for getting some materials to look correct in example scenes. It is not necessary
+      otherwise. \n\nSoon, there will be a feedback survey here for customer satisfaction,
+      needs, integrations, etc. In the meantime, experience the Interactor, its better
+      to participate later."
+    linkText: Feedback Survey
+    url: https://docs.google.com/forms/d/e/1FAIpQLScAXoDJg7udQaw8JD7Kr0hrQafEDryla_1AX_4mHsMQM6kD_A/viewform
+  - heading: Online Documentation and Videos
+    text: Every detail of Interactor explained at Online Documentation with images,
+      gifs, diagrams, code descriptions, tutorial videos, tips and more.
+    linkText: Online Documentation & Videos
+    url: https://negengames.com/interactor
+  - heading: Integrations and Examples
+    text: "Currently there are three versions of Interactor. When you import, it comes
+      with DefaultPack (InteractorIK) and you can convert between DefaultPack and
+      FinalIKPack (Final IK integration) on the Interactor component at any time.
+      \n\nAlso there is CorePack which has only core features without any example
+      scripts. \n\nBut DO NOT run these packs by yourself, use Interactor (add Interactor
+      to any scene object and select at Integrations section). Because some files
+      need to be deleted and Interactor handles that for you. \n\nAlso do not delete
+      the Examples folder because it has example scripts tied with Interactor core
+      scripts. If you don't need examples, use Interactor's Delete Examples button
+      to convert Core version.\n\nInteractor comes with default 2K textures because
+      of file sizes but all textures are actually in 4K resolution. If you want to
+      use 4K versions, you can download and import the 4K texture pack. Just import
+      the pack and it's done without any tweaks."
+    linkText: 4K Texture Pack
+    url: https://negengames.com/interactor/texturepack.html
+  - heading: QuickStart
+    text: "I strongly suggest you examine the Example Scenes first if you didn't yet.
+      There are samples for every interaction types with additional info. Also, there
+      are lots of comments on codes to explain most of the things. \n\nHere is a quick
+      guide for testing your first interactions with your own character: \n\n1- Add
+      Interactor to the player character (It will also add sphere collider if there
+      isn't any) \n\n2- Set sphere collider as a trigger. Increase its radius to cover
+      the whole character. Edit its center if you need fine adjustments (only Y-axis
+      in most cases). \n\n3- Interactor comes with Default InteractorIK, if you wish
+      to use Final IK, select Final IK on the integrations section on the Interactor
+      component. You can switch between them any time you want. \n\n4- Click Start
+      Interactor button and it will add your first Effector. \n\n5- Effectors are
+      like interaction sensors (one for each interactable player part). Add many as
+      you need ([ + ] [ - ] buttons), then adjust their parameters. You can copy parameters
+      and paste to another Effector with Copy/Paste buttons. When you add a new effector,
+      Interactor is going to ask you for a save file. Create a new one, it will be
+      used for prefab lists. \n\n6- If you want to ignore player triggers/colliders
+      on design (Editor) and on interactions (Runtime) add your character to the Player
+      layer. Raycasts will ignore that layer. \n\n7- If you're using the Default InteractorIK
+      version, add InteractorIK component to your character. Set your IK Parts for
+      each interactable body part. Set durations to 2, Multiplier For Second Halfs
+      to 1 and select Match Children Bones if you wish to animate its child bones.
+      \n\n8- If you're using the Final IK version, you need to make proper setup for
+      Final IK (It's own setup). See details on Online Documentation. \n\n9- Find
+      your Effector bones on your character skeleton rig (interactable body parts
+      like Left Hand, Right Foot, etc), copy them, add InteractorTarget.cs to each
+      one of them, set their Effector Type and Match Children Bones options. Make
+      prefabs each one of them separately (Select in the hierarchy and drag it in
+      any folder). You can delete them now in the scene because we only need prefabs.
+      \n\n10- Open Interactor again and click the Spawner Window button to open Interactor
+      Target Spawner. Assign prefabs to the main prefab slot for each effector that
+      you want to use. Do not close the spawner window, you can dock it on any tab
+      of Unity editor (After all prefabs added, save the scene to save prefab list).
+      Activate the Add Required Components option. \n\n11- Create a 3D Object in scene
+      (Cube etc). Right-click on it at scene view to spawn desired prefabs (Interactor
+      Target Spawner window must stay open for scene view menus). \n\n12- Create empty
+      GameObject, add BasicUI.cs and PlayerState.cs components. Assign player to Player
+      Object field on PlayerState.cs component. \n\n13- Add BasicInputInteract.cs
+      component to player. \n\n14- Play and interact. If your effector parameters
+      and spawned target match, when your character in the right position you should
+      able to interact. See Online Documentation and tutorial videos for more details."
+    linkText: 
+    url: 
+  - heading: Last Words
+    text: "I'm a solo indie developer and developing my own game for the last 2 years
+      without any income (with savings from my last job, well, which is zero now).
+      I'm also using this tool in my game and that\u2019s why I made it for public
+      use, to continue my development. I put a lot of effort into this tool and still,
+      there is plenty of room for improvement, which is going to carry this tool to
+      the next level (I hope). \n\n\xBBYou can read my future vision on online documentation.
+      \n\nSo if you're satisfied and want to support this tool, I\u2019d appreciate
+      if you leave ratings & comments on the store page. If you're not satisfied,
+      reach me out and I'll do my best to help. Thank you. \n\n-razz"
+    linkText: Interactor Store Page
+    url: https://assetstore.unity.com/packages/slug/178062
