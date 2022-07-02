@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 7978309953698892070}
   m_Layer: 0
   m_Name: ECM2_FirstPersonCharacter
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -112,10 +112,10 @@ MonoBehaviour:
   _constrainToPlane: 0
   _capsuleRadius: 0.5
   _capsuleHeight: 2
-  _slopeLimit: 60
+  _slopeLimit: 50
   _stepOffset: 0.45
   _perchOffset: 0.5
-  _unperchOffset: 0
+  _unperchOffset: 0.2
   _perchAdditionalHeight: 0.4
   _collideWithTriggers: 0
   _groundMask:
@@ -155,26 +155,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4555cae70e7de843a5ff942a3fa4d70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _actions: {fileID: -944628639613478452, guid: 216200a53981723469659f2be0cef848,
-    type: 3}
+  _actions: {fileID: -944628639613478452, guid: 216200a53981723469659f2be0cef848, type: 3}
   _rotationRate: 540
   _rotationMode: 0
-  _maxWalkSpeed: 6
+  _maxWalkSpeed: 3
   _minAnalogWalkSpeed: 0
   _maxAcceleration: 20
   _brakingDecelerationWalking: 20
   _groundFriction: 8
-  _sprintSpeedMultiplier: 1.5
+  _sprintSpeedMultiplier: 1.75
   _sprintAccelerationMultiplier: 1
-  _maxWalkSpeedCrouched: 3
+  _maxWalkSpeedCrouched: 1.25
   _crouchedHeight: 1
   _crouchedJump: 0
-  _maxFallSpeed: 40
+  _maxFallSpeed: 20
   _brakingDecelerationFalling: 0
   _fallingLateralFriction: 0.3
   _airControl: 0.8
   _jumpMaxCount: 1
-  _jumpImpulse: 6
+  _jumpImpulse: 2
   _jumpMaxHoldTime: 0.35
   _jumpPreGroundedTime: 0.15
   _jumpPostGroundedTime: 0.15
@@ -201,8 +200,8 @@ MonoBehaviour:
   _camera: {fileID: 1003999250895629762}
   rootPivot: {fileID: 1206348748782637635}
   eyePivot: {fileID: 7631915057527122491}
-  _eyeHeight: 1.6
-  _eyeHeightCrouched: 1
+  _eyeHeight: 1.5
+  _eyeHeightCrouched: 0.75
   _forwardSpeedMultiplier: 1
   _backwardSpeedMultiplier: 0.5
   _strafeSpeedMultiplier: 0.75
