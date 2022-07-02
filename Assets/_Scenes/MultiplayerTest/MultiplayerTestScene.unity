@@ -565,7 +565,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 773550267}
   m_HandleRect: {fileID: 773550266}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -1034,10 +1034,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 044b89b0db0fce44e849375d1d33f2eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainPanel: {fileID: 1890927583}
+  mainPanel: {fileID: 0}
   _uiPanels:
-  - {fileID: 593768572}
-  - {fileID: 1890927583}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &612516046
 Transform:
   m_ObjectHideFlags: 0
@@ -1599,7 +1599,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
-  m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 0
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
@@ -3985,7 +3984,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1280887518}
   m_HandleRect: {fileID: 1280887517}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:

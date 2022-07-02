@@ -21,7 +21,6 @@ public class ModifiedButton : Button
     [SerializeField] private float duration = 0.5f;
 
     [BHeader("Analytics")]
-    [SerializeField] private bool sendsAnalytics = true;
     [SerializeField] private string eventName;
     [SerializeField] private string parameterName;
     [SerializeField] private string parameterValue;
