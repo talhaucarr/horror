@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 849017086955853445}
   - component: {fileID: 7978309953698892070}
   m_Layer: 0
-  m_Name: ECM2_FirstPersonCharacter
+  m_Name: PlayerFirstPerson
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
