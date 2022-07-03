@@ -3330,8 +3330,8 @@ namespace ECM2.Characters
         {
             // Cache and init components
             if (TryGetComponent<PhotonView>(out PhotonView pv)) if (!pv.IsMine) 
-                { 
-                    camera.gameObject.SetActive(false);
+                {
+                    camera.enabled = false;
                     Destroy(GetComponent<Rigidbody>());
                     Destroy(GetComponent<RootMotionController>());
                     Destroy(GetComponent<CharacterLook>());
