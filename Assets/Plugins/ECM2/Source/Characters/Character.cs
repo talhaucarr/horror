@@ -1,6 +1,7 @@
 ﻿using ECM2.Common;
 using ECM2.Components;
 using ECM2.Helpers;
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -3328,7 +3329,15 @@ namespace ECM2.Characters
         protected virtual void OnAwake()
         {
             // Cache and init components
-
+            if (TryGetComponent<PhotonView>(out PhotonView pv)) if (!pv.IsMine) 
+                { 
+                    camera.gameObject.SetActive(false);
+                    Destroy(GetComponent<Rigidbody>());
+                    Destroy(GetComponent<RootMotionController>());
+                    Destroy(GetComponent<CharacterLook>());
+                    Destroy(this); 
+                    return; 
+                }
             _characterMovement = GetComponent<CharacterMovement>();
             _characterMovement.SetCallbackTarget(this);
 
@@ -3347,7 +3356,7 @@ namespace ECM2.Characters
 
         protected virtual void OnOnDestroy()
         {
-            _characterMovement.RemoveCallbackTarget();
+            if(_characterMovement) _characterMovement.RemoveCallbackTarget();
         }
 
         /// <summary>

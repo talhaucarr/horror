@@ -12,7 +12,6 @@ namespace ECM2.Characters
     /// This extends the Character class to add controls for a typical first person movement. 
     /// </summary>
 
-    [RequireComponent(typeof(CharacterLook))]
     public class FirstPersonCharacter : Character
     {
         #region EDITOR EXPOSED FIELDS
@@ -191,17 +190,8 @@ namespace ECM2.Characters
                 return;
 
             if (context.started)
-                characterLook.LockCursor();
-        }
-
-        /// <summary>
-        /// Cursor unlock input action handler.
-        /// </summary>
-
-        protected virtual void OnCursorUnlock(InputAction.CallbackContext context)
-        {
-            if (context.started)
-                characterLook.UnlockCursor();
+                if (!characterLook.IsCursorLocked()) characterLook.LockCursor();
+                else characterLook.UnlockCursor();
         }
 
         #endregion
@@ -356,10 +346,6 @@ namespace ECM2.Characters
             cursorLockInputAction = actions.FindAction("Cursor Lock");
             if (cursorLockInputAction != null)
                 cursorLockInputAction.started += OnCursorLock;
-
-            cursorUnlockInputAction = actions.FindAction("Cursor Unlock");
-            if (cursorUnlockInputAction != null)
-                cursorUnlockInputAction.started += OnCursorUnlock;
         }
 
         /// <summary>
@@ -495,7 +481,6 @@ namespace ECM2.Characters
             mouseLookInputAction?.Enable();
             controllerLookInputAction?.Enable();
             cursorLockInputAction?.Enable();
-            cursorUnlockInputAction?.Enable();
         }
 
         /// <summary>
@@ -514,7 +499,6 @@ namespace ECM2.Characters
             mouseLookInputAction?.Disable();
             controllerLookInputAction?.Disable();
             cursorLockInputAction?.Disable();
-            cursorUnlockInputAction?.Disable();
         }
 
         /// <summary>

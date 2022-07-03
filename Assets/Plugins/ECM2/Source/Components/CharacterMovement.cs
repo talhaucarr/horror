@@ -1,4 +1,5 @@
 ﻿using ECM2.Common;
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -2505,6 +2506,11 @@ namespace ECM2.Components
 
         protected virtual void OnAwake()
         {
+            if (TryGetComponent<PhotonView>(out PhotonView pv)) if (!pv.IsMine)
+                {
+                    Destroy(this);
+                    return;
+                }
             _transform = GetComponent<Transform>();
 
             _rigidbody = GetComponent<Rigidbody>();
@@ -2552,6 +2558,11 @@ namespace ECM2.Components
 
         protected virtual void OnOnEnable()
         {
+            if (TryGetComponent<PhotonView>(out PhotonView pv)) if (!pv.IsMine)
+                {
+                    Destroy(this);
+                    return;
+                }
             if (_lateFixedUpdateCoroutine != null)
                 StopCoroutine(_lateFixedUpdateCoroutine);
 

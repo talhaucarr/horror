@@ -60,14 +60,6 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
-                },
-                {
-                    "name": "Cursor Unlock",
-                    "type": "Button",
-                    "id": "12a1d28f-aeba-4eed-963a-db43508fafef",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -228,22 +220,11 @@
                 {
                     "name": "",
                     "id": "632f388c-d728-42c3-87d5-9fb8d08e6c64",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard And Mouse",
-                    "action": "Cursor Lock",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "31e6e5cd-89c8-4485-83ea-4affa494487f",
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard And Mouse",
-                    "action": "Cursor Unlock",
+                    "action": "Cursor Lock",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

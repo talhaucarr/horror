@@ -6,6 +6,8 @@ using System.IO;
 
 public class PlayerManager : MonoBehaviour
 {
+    [SerializeField] Transform defaultSpawnPosition;
+    
     PhotonView PV;
     void Awake()
     {
@@ -14,14 +16,13 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
-        if (PV.IsMine)
-        {
-            CreatePlayerController();
-        }
+        CreatePlayerController();
     }
 
     void CreatePlayerController()
     {
-        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerFirstPerson"), Vector3.zero, Quaternion.identity);
+        Debug.Log("Player Id:" + PV.Controller.ActorNumber);
+        Vector3 spawnPosition = defaultSpawnPosition.position + new Vector3(PV.Controller.ActorNumber * 10, 0, 0);
+        PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerFirstPerson"), spawnPosition, Quaternion.identity);
     }
 }
