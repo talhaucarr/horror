@@ -5,6 +5,8 @@ namespace _Scripts.FieldOfView
 {
     public class FieldOfViewModule : MonoBehaviour
     {
+        [SerializeField] private Transform cameraTransform;
+        public Transform CameraTransform => cameraTransform;
         public float radius;
         [Range(0,360)]
         public float angle;
@@ -31,22 +33,23 @@ namespace _Scripts.FieldOfView
                 yield return wait;
                 FieldOfViewCheck();
             }
+            yield return null;
         }
 
         private void FieldOfViewCheck()
         {
-            Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius, targetMask);
+            Collider[] rangeChecks = Physics.OverlapSphere(cameraTransform.position, radius, targetMask);
 
             if (rangeChecks.Length != 0)
             {
                 Transform target = rangeChecks[0].transform;
-                Vector3 directionToTarget = (target.position - transform.position).normalized;
+                Vector3 directionToTarget = (target.position - cameraTransform.position).normalized;
 
                 if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
                 {
-                    float distanceToTarget = Vector3.Distance(transform.position, target.position);
+                    float distanceToTarget = Vector3.Distance(cameraTransform.position, target.position);
 
-                    if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask))
+                    if (!Physics.Raycast(cameraTransform.position, directionToTarget, distanceToTarget, obstructionMask))
                         canSeePlayer = true;
                     else
                         canSeePlayer = false;

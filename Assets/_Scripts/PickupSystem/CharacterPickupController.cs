@@ -1,12 +1,15 @@
 using System;
 using UnityEngine;
 using _Scripts.FieldOfView;
+using _Scripts.InputSystem;
 using Random = UnityEngine.Random;
 
 namespace _Scripts.PickupSystem
 {
     public class CharacterPickupController : MonoBehaviour
     {
+        [BHeader("Input Controller")] 
+        [SerializeField] private InputController inputController;
         [BHeader("Pickup Settings")]
         [SerializeField] private Transform spawnPosition;
         [Range(0,5)] 
@@ -19,29 +22,21 @@ namespace _Scripts.PickupSystem
         private bool _isTaken;
         private GameObject go;
 
+        private void Start()
+        {
+            inputController.DropEvent += Drop;
+            inputController.InteractEvent += Pickup;
+        }
+
         private void FixedUpdate()
         {
             RaycastHit HitInfo;
 
-            if (Input.GetKey(KeyCode.I))//TODO yeni input sisteme bağla
-            {
-                if (go.TryGetComponent<IPickupable>(out var pickupable))
-                {
-                    pickupable.Drop(rb.velocity, cameraRef);
-                }
-            }
+            
 
             if (Physics.Raycast(cameraRef.position, cameraRef.forward, out HitInfo, 10, layer))
             {
                 go = HitInfo.transform.gameObject;
-                if (Input.GetKey(KeyCode.H))
-                {
-                    if (HitInfo.transform.gameObject.TryGetComponent<IPickupable>(out var pickupable))
-                    {
-                        pickupable.Pickup(spawnPosition);
-                        
-                    }
-                }
                 go.GetComponent<IInteractable>().Interact();
                 Debug.DrawRay(cameraRef.position, cameraRef.forward * 100.0f, Color.yellow);
             }
@@ -56,11 +51,19 @@ namespace _Scripts.PickupSystem
         private void Pickup()
         {
             
+            if (go.transform.gameObject.TryGetComponent<IPickupable>(out var pickupable))
+            {
+                pickupable.Pickup(spawnPosition);
+                        
+            }
         }
 
         private void Drop()
         {
-            
+            if (go.TryGetComponent<IPickupable>(out var pickupable))
+            {
+                pickupable.Drop(rb.velocity, cameraRef);
+            }
         }
     }
 }

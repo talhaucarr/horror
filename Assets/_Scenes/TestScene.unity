@@ -7348,6 +7348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: befcd007356a0e54299b7b7095e88595, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputController: {fileID: 2381835612119734929}
   spawnPosition: {fileID: 595210302}
   pickupRange: 0
   rb: {fileID: 5066672954110837462}
@@ -13313,6 +13314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSettings: {fileID: 0}
   outline: {fileID: 1976827668}
+  outlineColor: {r: 0.052954797, g: 0.6603774, b: 0.63683486, a: 1}
   rb: {fileID: 1976827666}
   itemCollider: {fileID: 1976827661}
 --- !u!54 &1976827666
@@ -13378,7 +13380,7 @@ MonoBehaviour:
   renderStyle: 1
   outlineParameters:
     enabled: 1
-    color: {r: 1, g: 1, b: 1, a: 1}
+    color: {r: 1, g: 1, b: 1, a: 0}
     dilateShift: 1
     blurShift: 1
     fillPass:
@@ -15224,6 +15226,7 @@ GameObject:
   - component: {fileID: 849017085614269911}
   - component: {fileID: 7978309952896023156}
   - component: {fileID: 1072256744}
+  - component: {fileID: 2381835612119734929}
   m_Layer: 0
   m_Name: Gokay
   m_TagString: Player
@@ -15231,6 +15234,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &2381835612119734929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2381835612119734928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6fc3c80f3aede84cbc16cdb1bf0aada, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!81 &4097298615669551665
 AudioListener:
   m_ObjectHideFlags: 0
