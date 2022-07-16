@@ -8,8 +8,8 @@ namespace _Scripts.InputSystem
     {
         public event Action InteractEvent;
         public event Action DropEvent;
-        
-        
+        public event Action<int> ChangeWeaponEvent; 
+
         private Controls _controls;
         
         private void Start()
@@ -26,7 +26,6 @@ namespace _Scripts.InputSystem
         
         public void OnInteract(InputAction.CallbackContext context)
         {
-            Debug.Log($"AGA ");
             if(!context.performed) return;
             InteractEvent?.Invoke();
         }
@@ -35,6 +34,13 @@ namespace _Scripts.InputSystem
         {
             if(!context.performed) return;
             DropEvent?.Invoke();
+        }
+
+        public void OnInventory1(InputAction.CallbackContext context)
+        {
+            if(!context.performed) return;
+            int.TryParse(context.control.name, out var numKeyValue);
+            ChangeWeaponEvent?.Invoke(numKeyValue);
         }
     }
 }

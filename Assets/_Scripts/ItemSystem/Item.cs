@@ -9,7 +9,7 @@ namespace _Scripts.ItemSystem
     public abstract class Item : MonoBehaviour, IInteractable, IPickupable
     {
         [BHeader("Item Settings")]
-        [SerializeField] private ItemSettings itemSettings;
+        [SerializeField] private ItemData itemData;
 
         [BHeader("Outline")] 
         [SerializeField] private Outlinable outline;
@@ -19,13 +19,8 @@ namespace _Scripts.ItemSystem
         [SerializeField] protected Rigidbody rb;
         [SerializeField] protected Collider itemCollider;
 
-        public ItemSettings ItemSettings => itemSettings;
-
-        private void Start()
-        {
-            
-        }
-
+        public ItemData ItemData => itemData;
+        
         protected virtual void EnableOutline()
         {
             if (outline)
