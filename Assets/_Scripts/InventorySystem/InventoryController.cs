@@ -8,13 +8,10 @@ namespace _Scripts.InventorySystem
     public class InventoryController : MonoBehaviour
     {
         [SerializeField] private InventorySettings inventorySettings;
-        [SerializeField] public List<Transform> slotLists = new List<Transform>(); 
+        [SerializeField] private List<Transform> slotLists = new List<Transform>();
+        
         private Dictionary<ItemData, InventoryItem> _itemDictionary = new Dictionary<ItemData, InventoryItem>();
         private List<InventoryItem> _inventoryItems = new List<InventoryItem>();
-
-        public bool isFull;
-        public InventorySettings InventorySettings => inventorySettings;
-        
         private bool _isAnyWeaponEquipped = false;
         
         public InventoryItem GetItem(int index)
@@ -89,9 +86,7 @@ namespace _Scripts.InventorySystem
                     _itemDictionary.Remove(data);
                 }
             }
-
             if (_inventoryItems.Count == 0) _isAnyWeaponEquipped = false; //if there are no items in the inventory, then no weapon is equipped
-            //ChangeWeapon(1);//if there are no items in the inventory, then the weapon is changed to the first one in the list
         }
 
         public void ChangeWeapon(int index)
@@ -130,7 +125,6 @@ namespace _Scripts.InventorySystem
         private void UnequipWeapon(GameObject go)
         {
             go.SetActive(false);
-            //_isAnyWeaponEquipped = false;
         }
     }
 }

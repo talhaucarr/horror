@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 namespace _Scripts.PickupSystem
 {
-    public class CharacterPickupController : MonoBehaviour
+    public class InteractionController : MonoBehaviour
     {
         [BHeader("Input Controller")] 
         [SerializeField] private InputController inputController;
@@ -61,23 +61,20 @@ namespace _Scripts.PickupSystem
 
         private void Pickup()
         {
-            if (_go.transform.gameObject.TryGetComponent<Item>(out var pickupable))
-            {
-                if(_inventoryController.isFull) _go.SetActive(false);
-                _inventoryController.GetEmptyItemSlot(out var emptySlot);
-                pickupable.Pickup(emptySlot);
-                _inventoryController.AddItemToInventory(pickupable.ItemData, _go);
-            }
+            if (!_go.transform.gameObject.TryGetComponent<Item>(out var pickupable)) return;
+            
+            _inventoryController.GetEmptyItemSlot(out var emptySlot);
+            pickupable.Pickup(emptySlot);
+            _inventoryController.AddItemToInventory(pickupable.ItemData, _go);
         }
 
         private void Drop()
         {
             var currentWeapon = _inventoryController.CurrentWeapon();
-            if (currentWeapon.TryGetComponent<Item>(out var pickupable))
-            {
-                pickupable.Drop(rb.velocity, cameraRef);
-                _inventoryController.RemoveItemFromInventory(pickupable.ItemData);
-            }
+            if (!currentWeapon.TryGetComponent<Item>(out var pickupable)) return;
+            
+            pickupable.Drop(rb.velocity, cameraRef);
+            _inventoryController.RemoveItemFromInventory(pickupable.ItemData);
         }
 
         private void ChangeWeapon(int keyCode)
