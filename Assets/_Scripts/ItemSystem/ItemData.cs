@@ -1,18 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemData : MonoBehaviour
+namespace _Scripts.ItemSystem
 {
-    // Start is called before the first frame update
-    void Start()
+    [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Item")]
+    public class ItemData : ScriptableObject
     {
+        [SerializeField] private string itemId;
+        [SerializeField] private string displayName;
+        [SerializeField] private Sprite icon;
+        [SerializeField] private GameObject prefab;
+        [SerializeField] private ItemType itemType;
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public string ItemId => itemId;
+        public string DisplayName => displayName;
+        public Sprite Icon => icon;
+        public GameObject Prefab => prefab;
+        public ItemType ItemType => itemType;
     }
 }

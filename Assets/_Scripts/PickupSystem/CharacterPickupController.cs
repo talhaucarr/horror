@@ -2,6 +2,8 @@ using System;
 using UnityEngine;
 using _Scripts.FieldOfView;
 using _Scripts.InputSystem;
+using _Scripts.InventorySystem;
+using _Scripts.ItemSystem;
 using Random = UnityEngine.Random;
 
 namespace _Scripts.PickupSystem
@@ -17,53 +19,63 @@ namespace _Scripts.PickupSystem
         [SerializeField] private Rigidbody rb;
         [SerializeField] private LayerMask layer;
         [SerializeField] private Transform cameraRef;//TODO kamera referansını düzgün refactor at.
-
-        private FieldOfViewModule _fov;
-        private bool _isTaken;
-        private GameObject go;
+        
+        private InventoryController _inventoryController;
+        private GameObject _go;
+        private GameObject _pickedItem;
 
         private void Start()
         {
+            _inventoryController = GetComponent<InventoryController>();
+            
             inputController.DropEvent += Drop;
             inputController.InteractEvent += Pickup;
+            inputController.ChangeWeaponEvent += ChangeWeapon;
         }
 
         private void FixedUpdate()
         {
             RaycastHit HitInfo;
-
             
-
             if (Physics.Raycast(cameraRef.position, cameraRef.forward, out HitInfo, 10, layer))
             {
-                go = HitInfo.transform.gameObject;
-                go.GetComponent<IInteractable>().Interact();
+                _go = HitInfo.transform.gameObject;
+                _go.GetComponent<IInteractable>().Interact();
                 Debug.DrawRay(cameraRef.position, cameraRef.forward * 100.0f, Color.yellow);
             }
             else
             {
-                if(go != null)
-                    go.GetComponent<IInteractable>().EndInteraction();
+                if (_go != null)
+                {
+                    _go.GetComponent<IInteractable>().EndInteraction();
+                    _go = null;
+                }
             }
-            
         }
 
         private void Pickup()
         {
-            
-            if (go.transform.gameObject.TryGetComponent<IPickupable>(out var pickupable))
+            if (_go.transform.gameObject.TryGetComponent<Item>(out var pickupable))
             {
+                if(_inventoryController.isFull) _go.SetActive(false);
                 pickupable.Pickup(spawnPosition);
-                        
+                _inventoryController.AddItemToInventory(pickupable.ItemData, _go);
             }
         }
 
         private void Drop()
         {
-            if (go.TryGetComponent<IPickupable>(out var pickupable))
+            var currentWeapon = _inventoryController.CurrentWeapon();
+            if (currentWeapon.TryGetComponent<Item>(out var pickupable))
             {
                 pickupable.Drop(rb.velocity, cameraRef);
+                _inventoryController.RemoveItemFromInventory(pickupable.ItemData);
             }
+        }
+
+        private void ChangeWeapon(int keyCode)
+        {
+            _inventoryController.ChangeWeapon(keyCode);
         }
     }
 }
