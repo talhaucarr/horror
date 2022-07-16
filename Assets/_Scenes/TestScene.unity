@@ -15002,6 +15002,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventorySettings: {fileID: 11400000, guid: db490146e644aa44a8acf48f9dca555e, type: 2}
+  slotLists: []
   isFull: 0
 --- !u!81 &4097298615669551665
 AudioListener:

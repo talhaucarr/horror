@@ -27,6 +27,7 @@ namespace _Scripts.PickupSystem
         private void Start()
         {
             _inventoryController = GetComponent<InventoryController>();
+            CreateItemSlot();
             
             inputController.DropEvent += Drop;
             inputController.InteractEvent += Pickup;
@@ -52,13 +53,19 @@ namespace _Scripts.PickupSystem
                 }
             }
         }
+        
+        private void CreateItemSlot()
+        {
+            _inventoryController.CreateItemSlot(spawnPosition);
+        }
 
         private void Pickup()
         {
             if (_go.transform.gameObject.TryGetComponent<Item>(out var pickupable))
             {
                 if(_inventoryController.isFull) _go.SetActive(false);
-                pickupable.Pickup(spawnPosition);
+                _inventoryController.GetEmptyItemSlot(out var emptySlot);
+                pickupable.Pickup(emptySlot);
                 _inventoryController.AddItemToInventory(pickupable.ItemData, _go);
             }
         }
