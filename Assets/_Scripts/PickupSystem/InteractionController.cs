@@ -12,17 +12,18 @@ namespace _Scripts.PickupSystem
     {
         [BHeader("Input Controller")] 
         [SerializeField] private InputController inputController;
-        [BHeader("Pickup Settings")]
+        [BHeader("Interact Settings")]
         [SerializeField] private Transform spawnPosition;
-        [Range(0,5)] 
-        [SerializeField] private float pickupRange;
         [SerializeField] private Rigidbody rb;
-        [SerializeField] private LayerMask layer;
         [SerializeField] private Transform cameraRef;//TODO kamera referansını düzgün refactor at.
+        
+        [Range(0,25)] 
+        [SerializeField] private float pickupRange;
+        [SerializeField] private LayerMask layer;
+        
         
         private InventoryController _inventoryController;
         private GameObject _go;
-        private GameObject _pickedItem;
 
         private void Start()
         {
@@ -38,7 +39,7 @@ namespace _Scripts.PickupSystem
         {
             RaycastHit HitInfo;
             
-            if (Physics.Raycast(cameraRef.position, cameraRef.forward, out HitInfo, 10, layer))
+            if (Physics.Raycast(cameraRef.position, cameraRef.forward, out HitInfo, pickupRange, layer))
             {
                 _go = HitInfo.transform.gameObject;
                 _go.GetComponent<IInteractable>().Interact();
@@ -61,6 +62,7 @@ namespace _Scripts.PickupSystem
 
         private void Pickup()
         {
+            if(_go == null) return;
             if (!_go.transform.gameObject.TryGetComponent<Item>(out var pickupable)) return;
             
             _inventoryController.GetEmptyItemSlot(out var emptySlot);
@@ -71,6 +73,9 @@ namespace _Scripts.PickupSystem
         private void Drop()
         {
             var currentWeapon = _inventoryController.CurrentWeapon();
+            
+            if(currentWeapon == null) return;
+            
             if (!currentWeapon.TryGetComponent<Item>(out var pickupable)) return;
             
             pickupable.Drop(rb.velocity, cameraRef);

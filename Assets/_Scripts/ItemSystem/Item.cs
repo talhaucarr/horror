@@ -20,12 +20,7 @@ namespace _Scripts.ItemSystem
         [SerializeField] protected Collider itemCollider;
 
         public ItemData ItemData => itemData;
-
-        private void Start()
-        {
-            
-        }
-
+        
         protected virtual void EnableOutline()
         {
             if (outline)

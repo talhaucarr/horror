@@ -7350,12 +7350,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputController: {fileID: 2381835612119734929}
   spawnPosition: {fileID: 595210302}
-  pickupRange: 0
   rb: {fileID: 5066672954110837462}
+  cameraRef: {fileID: 7967105303086456454}
+  pickupRange: 3.25
   layer:
     serializedVersion: 2
     m_Bits: 64
-  cameraRef: {fileID: 7967105303086456454}
 --- !u!1 &1078382311
 GameObject:
   m_ObjectHideFlags: 0
@@ -15003,7 +15003,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventorySettings: {fileID: 11400000, guid: db490146e644aa44a8acf48f9dca555e, type: 2}
   slotLists: []
-  isFull: 0
 --- !u!81 &4097298615669551665
 AudioListener:
   m_ObjectHideFlags: 0
