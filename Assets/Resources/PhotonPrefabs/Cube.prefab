@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsMine: 0
+  rb: {fileID: 317790074330069334}
   componentsToDisable:
-  - {fileID: 317790074330069334}
   - {fileID: 317790074330069329}
 --- !u!65 &317790074330069329
 BoxCollider:
