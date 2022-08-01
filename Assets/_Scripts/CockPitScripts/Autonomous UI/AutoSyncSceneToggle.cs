@@ -56,7 +56,6 @@ namespace Photon.Pun.Demo.Cockpit
         {
             Debug.Log(value);
 			PhotonNetwork.AutomaticallySyncScene = value;
-            Debug.Log("PhotonNetwork.CrcCheckEnabled = " + PhotonNetwork.CrcCheckEnabled, this);
         }
     }
 }

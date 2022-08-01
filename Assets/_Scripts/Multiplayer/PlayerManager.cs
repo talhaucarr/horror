@@ -6,6 +6,7 @@ using System.IO;
 
 public class PlayerManager : MonoBehaviour
 {
+
     [SerializeField] Transform defaultSpawnPosition;
     
     PhotonView PV;
