@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using _Scripts.ItemSystem;
 using UnityEngine;
 
@@ -37,6 +38,7 @@ namespace _Scripts.InventorySystem
                 GameObject go = Instantiate(emptyGameobject, spawnParent);
                 go.name = "InventoryItemSlot" + i;
                 slotLists.Add(go.transform);
+                Destroy(emptyGameobject);
             }
         }
         

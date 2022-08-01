@@ -53,7 +53,7 @@ namespace _Scripts.ItemSystem
             Transform itemTransform;
             (itemTransform = transform).SetParent(spawnPosition);
             itemTransform.localPosition = Vector3.zero;
-            itemTransform.localRotation = Quaternion.identity;
+            itemTransform.localRotation = Quaternion.Euler(60, 0, 0);
             rb.isKinematic = true;
         }
 
