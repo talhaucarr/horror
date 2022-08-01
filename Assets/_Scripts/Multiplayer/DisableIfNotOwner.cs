@@ -10,6 +10,7 @@ public class DisableIfNotOwner : MonoBehaviour
     private void Awake()
     {
         IsMine = GetComponent<Photon.Pun.PhotonView>().ControllerActorNr == Photon.Pun.PhotonNetwork.LocalPlayer.ActorNumber;
+        if (!IsMine) DisableComponents();
     }
 
     private void DisableComponents() 
