@@ -5,7 +5,9 @@ using UnityEngine;
 public class DisableIfNotOwner : MonoBehaviour
 {
     public bool IsMine = false;
-
+    
+    [SerializeField] private Rigidbody rb;
+    
     [SerializeField] private Component[] componentsToDisable;
     private void Awake()
     {
@@ -20,5 +22,7 @@ public class DisableIfNotOwner : MonoBehaviour
         {
             Destroy(component);
         }
+        
+        if(rb) rb.isKinematic = true;
     }
 }
